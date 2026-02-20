@@ -1,19 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="App">
 
       {/* Navbar */}
       <header className="navbar">
         <div className="logo">AG</div>
-        <nav>
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
+
+        <nav className={menuOpen ? "nav-links active" : "nav-links"}>
+          <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+          <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+          <a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
         </nav>
+
+        {/* Hamburger */}
+        <div 
+          className={menuOpen ? "hamburger active" : "hamburger"} 
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </header>
 
       {/* Hero Section */}
@@ -31,7 +44,10 @@ function App() {
         </div>
 
         <div className="hero-image">
-          <img src="/profile.jpg" alt="Abdub" />
+          <img 
+            src={process.env.PUBLIC_URL + "/profile.jpg"} 
+            alt="Abdub"
+          />
         </div>
       </section>
 
@@ -40,37 +56,31 @@ function App() {
         <h2>About Me</h2>
         <p>
           I am a professional Nutritionist passionate about technology.
-          I specialize in web development (HTML, CSS, JavaScript, React),
-          network configuration, ISP setup, PC troubleshooting, and
-          creative graphic design.
+          I specialize in web development, network configuration,
+          ISP setup, PC troubleshooting, and graphic design.
         </p>
       </section>
 
       {/* Services */}
       <section id="services" className="section light">
         <h2>What I Do</h2>
-
         <div className="grid">
           <div className="card">
             <h3>Nutrition Consulting</h3>
             <p>Diet planning, health assessments & lifestyle guidance.</p>
           </div>
-
           <div className="card">
             <h3>Web Development</h3>
             <p>Modern responsive websites & React applications.</p>
           </div>
-
           <div className="card">
             <h3>Network Management</h3>
-            <p>MikroTik config, ISP setup & technical support.</p>
+            <p>MikroTik config & ISP technical support.</p>
           </div>
-
           <div className="card">
             <h3>PC Troubleshooting</h3>
-            <p>Driver fixes, OS installation & optimization.</p>
+            <p>Driver fixes & OS installation.</p>
           </div>
-
           <div className="card">
             <h3>Graphics Design</h3>
             <p>Flyers, posters & branding materials.</p>
@@ -81,7 +91,6 @@ function App() {
       {/* Skills */}
       <section id="skills" className="section">
         <h2>Technical Skills</h2>
-
         <div className="skills">
           <Skill name="HTML & CSS" percent="95%" />
           <Skill name="JavaScript & React" percent="88%" />
@@ -106,8 +115,11 @@ function App() {
         </div>
       </section>
 
+      {/* Footer */}
       <footer>
-        © {new Date().getFullYear()} Abdub Galgallo. All Rights Reserved.
+        © {new Date().getFullYear()} Abdub Galgallo | All right Reserved.  
+        <br />
+        Powered by Horizon Solutions
       </footer>
 
     </div>
@@ -126,4 +138,3 @@ function Skill({ name, percent }) {
 }
 
 export default App;
-
