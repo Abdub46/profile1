@@ -30,10 +30,19 @@ function App() {
       Horizon
     </Link>
 
+
+
     <nav className={menuOpen ? "nav-links active" : "nav-links"}>
-      <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
-      <Link to="/articles" onClick={() => setMenuOpen(false)}>Articles</Link>
-    </nav>
+
+  <div className="mobile-menu-header">
+    Horizon
+  </div>
+
+  <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
+  <Link to="/articles" onClick={() => setMenuOpen(false)}>Articles</Link>
+
+</nav>
+
 
     <div
       className={menuOpen ? "hamburger active" : "hamburger"}
