@@ -24,34 +24,28 @@ function App() {
 
        {/* NAVBAR */}
         <header className="navbar">
-  <Link to="/" className="logo">
-    Horizon
-  </Link>
+  <div className="nav-container">
 
+    <Link to="/" className="logo">
+      Horizon
+    </Link>
 
+    <nav className={menuOpen ? "nav-links active" : "nav-links"}>
+      <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
+      <Link to="/articles" onClick={() => setMenuOpen(false)}>Articles</Link>
+    </nav>
 
+    <div
+      className={menuOpen ? "hamburger active" : "hamburger"}
+      onClick={() => setMenuOpen(!menuOpen)}
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-  <nav className={menuOpen ? "nav-links active" : "nav-links"}>
-           
-            <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
-
-
-           
-
-
-<Link to="/articles" onClick={() => setMenuOpen(false)}>Articles</Link>
-          </nav>
-
-
-          <div
-            className={menuOpen ? "hamburger active" : "hamburger"}
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </header>
+  </div>
+</header>
 
 
 
