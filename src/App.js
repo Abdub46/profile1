@@ -5,6 +5,63 @@ import { Typewriter } from "react-simple-typewriter";
 import About from "./About";
 import Articles from "./Articles";
 
+function Home() {
+  return (
+    <>
+      {/* HERO */}
+      <section className="hero">
+        <div className="hero-text">
+          <h1>Welcome to <span>Horizon</span></h1>
+          <p className="intro">
+            Empowering health through nutrition,
+            building powerful web applications,
+            and delivering reliable IT systems.
+            Welcome to my digital space, where creativity meets purpose and ideas turn into meaningful experiences.
+            I’m passionate about building clean, modern, and impactful solutions that solve real-world problems.
+            Here, you’ll find a glimpse of my journey, the projects I’ve crafted, and the skills I continue to grow every day.
+            Take your time to explore, get inspired, and feel free to connect — I’m truly glad you’re here!
+          </p>
+          <h2 className="typewriter">
+            <Typewriter
+              words={[
+                "Nutrition Consulting",
+                "Web Development",
+                "Network Engineering",
+                "IT Solutions"
+              ]}
+              loop
+              cursor
+              cursorStyle="|"
+              typeSpeed={70}
+              deleteSpeed={40}
+              delaySpeed={1500}
+            />
+          </h2>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="section">
+        <h2 className="section-title">Services</h2>
+        <div className="grid">
+          <div className="card">Nutrition Consulting</div>
+          <div className="card">Web Development</div>
+          <div className="card">Network Configuration</div>
+          <div className="card">IT Support</div>
+          <div className="card">Nutrition Consulting</div>
+          <div className="card">Web Development</div>
+          <div className="card">Network Configuration</div>
+          <div className="card">IT Support</div>
+          <div className="card">Nutrition Consulting</div>
+          <div className="card">Web Development</div>
+          <div className="card">Network Configuration</div>
+          <div className="card">IT Support</div>
+        </div>
+      </section>
+    </>
+  );
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [email, setEmail] = useState("");
@@ -25,10 +82,7 @@ function App() {
         {/* NAVBAR */}
         <header className="navbar">
           <div className="nav-container">
-
-            <Link to="/" className="logo">
-              Horizon
-            </Link>
+            <Link to="/" className="logo">Horizon</Link>
 
             <nav className={menuOpen ? "nav-links active" : "nav-links"}>
               <div className="mobile-menu-header">Horizon</div>
@@ -46,78 +100,15 @@ function App() {
               <span></span>
               <span></span>
             </div>
-
           </div>
         </header>
 
         {/* MAIN CONTENT */}
         <main className="main-content">
           <Routes>
-
-            {/* HOME PAGE */}
-            <Route path="/" element={
-              <>
-                {/* HERO */}
-                <section className="hero">
-                  <div className="hero-text">
-                    <h1>Welcome to <span>Horizon</span></h1>
-                    <p className="intro">
-                      Empowering health through nutrition,
-                      building powerful web applications,
-                      and delivering reliable IT systems.
-                      Welcome to my digital space, where creativity meets purpose and ideas turn into meaningful experiences.
-                      I’m passionate about building clean, modern, and impactful solutions that solve real-world problems.
-                      Here, you’ll find a glimpse of my journey, the projects I’ve crafted, and the skills I continue to grow every day.
-                      Take your time to explore, get inspired, and feel free to connect — I’m truly glad you’re here!
-                    </p>
-                    <h2 className="typewriter">
-                      <Typewriter
-                        words={[
-                          "Nutrition Consulting",
-                          "Web Development",
-                          "Network Engineering",
-                          "IT Solutions"
-                        ]}
-                        loop
-                        cursor
-                        cursorStyle="|"
-                        typeSpeed={70}
-                        deleteSpeed={40}
-                        delaySpeed={1500}
-                      />
-                    </h2>
-                  </div>
-                </section>
-
-                {/* SERVICES */}
-                <section className="section">
-                  <h2 className="section-title">Services</h2>
-                  <div className="grid">
-                    <div className="card">Nutrition Consulting</div>
-                    <div className="card">Web Development</div>
-                    <div className="card">Network Configuration</div>
-                    <div className="card">IT Support</div>
-
-                    <div className="card">Nutrition Consulting</div>
-                    <div className="card">Web Development</div>
-                    <div className="card">Network Configuration</div>
-                    <div className="card">IT Support</div>
-
-                    <div className="card">Nutrition Consulting</div>
-                    <div className="card">Web Development</div>
-                    <div className="card">Network Configuration</div>
-                    <div className="card">IT Support</div>
-                  </div>
-                </section>
-              </>
-            } />
-
-            {/* ABOUT PAGE */}
+            <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-
-            {/* ARTICLES PAGE */}
             <Route path="/articles" element={<Articles />} />
-
           </Routes>
         </main>
 

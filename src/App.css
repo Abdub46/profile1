@@ -503,12 +503,12 @@ footer {
 
   /* Horizon title */
   .mobile-menu-header {
-    position: absolute;
+    position: relative;
     top: 30px;
     left: 30px;  /* SAME LEFT MARGIN AS LINKS */
     font-size: 22px;
     font-weight: 600;
-    color: #ffffff;
+    color: #f6f0f0dd;
     letter-spacing: 1px;
   }
 
