@@ -2,5 +2,7 @@
 
 Professional Nutritionist & Tech Specialist.
 
+I used react, css
+
 ## Live Website
-https://Abdub46.github.io/portfolio
+https://Abdub46.github.io/profile1
