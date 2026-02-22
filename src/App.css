@@ -534,3 +534,21 @@ footer {
   }
 
 }
+
+
+
+/*******************STICKY FOOTER**************/
+
+/* App.css - only add these */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+}
+
+.main-content {
+  flex: 1; /* take all remaining space */
+  display: flex;
+  flex-direction: column;
+}
+
