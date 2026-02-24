@@ -1,47 +1,40 @@
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import "./App.css";
 
 const Articles = () => {
   const [selectedArticle, setSelectedArticle] = useState(null);
 
-  // Lock background scroll when modal opens
   useEffect(() => {
-    if (selectedArticle) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = selectedArticle ? "hidden" : "auto";
   }, [selectedArticle]);
 
   const articles = [
     {
       id: 1,
       title: "Understanding Modern Web Development",
-      preview:
-        "A deep dive into how modern frameworks are shaping frontend architecture.",
+      preview: "A deep dive into modern frontend architecture.",
       content:
-        "Modern web development focuses on building scalable, responsive, and high-performance applications. Frameworks like React enable dynamic interfaces. Clean architecture, reusable components, performance optimization, and accessibility are essential principles in today’s ecosystem."
+        "Modern web development focuses on scalability, performance, and clean architecture. React enables dynamic interfaces using reusable components and efficient rendering systems."
     },
     {
       id: 2,
       title: "Why Clean UI Matters",
-      preview:
-        "Design is more than beauty — it defines user experience and engagement.",
+      preview: "Design defines user experience.",
       content:
-        "A clean interface improves usability and accessibility. Minimal spacing, consistent color systems, readable typography, and intuitive layouts ensure users interact effortlessly with your product."
+        "Clean UI improves usability, accessibility, and engagement. Consistent spacing, typography, and color systems enhance clarity and professionalism."
     },
     {
       id: 3,
       title: "The Future of Technology",
-      preview:
-        "AI, automation, and cloud systems are transforming industries.",
+      preview: "AI and automation are transforming industries.",
       content:
-        "Emerging technologies such as artificial intelligence and cloud computing are reshaping industries globally. Continuous learning and adaptability are critical for long-term success in the digital world."
+        "Artificial intelligence and cloud computing continue to reshape business models globally. Adaptability is key in the digital era."
     }
   ];
 
   return (
-    <div className="articles-page">
+    <>
       <section className="articles-section">
         <h2 className="section-title">Articles</h2>
 
@@ -60,28 +53,30 @@ const Articles = () => {
         </div>
       </section>
 
-      {selectedArticle && (
-        <div
-          className="article-modal-overlay"
-          onClick={() => setSelectedArticle(null)}
-        >
+      {selectedArticle &&
+        createPortal(
           <div
-            className="article-modal"
-            onClick={(e) => e.stopPropagation()}
+            className="modal-overlay"
+            onClick={() => setSelectedArticle(null)}
           >
-            <button
-              className="close-btn"
-              onClick={() => setSelectedArticle(null)}
+            <div
+              className="modal-content"
+              onClick={(e) => e.stopPropagation()}
             >
-              ✕
-            </button>
+              <button
+                className="close-btn"
+                onClick={() => setSelectedArticle(null)}
+              >
+                ✕
+              </button>
 
-            <h2>{selectedArticle.title}</h2>
-            <p>{selectedArticle.content}</p>
-          </div>
-        </div>
-      )}
-    </div>
+              <h2>{selectedArticle.title}</h2>
+              <p>{selectedArticle.content}</p>
+            </div>
+          </div>,
+          document.body
+        )}
+    </>
   );
 };
 
