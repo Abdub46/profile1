@@ -52,10 +52,7 @@ function Home() {
           <div className="card">Web Development</div>
           <div className="card">Network Configuration</div>
           <div className="card">IT Support</div>
-          <div className="card">Nutrition Consulting</div>
-          <div className="card">Web Development</div>
-          <div className="card">Network Configuration</div>
-          <div className="card">IT Support</div>
+          
         </div>
       </section>
     </>
