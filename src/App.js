@@ -46,16 +46,8 @@ function Home() {
         </div>
       </section>
 
-      {/* SERVICES */}
-      <section className="section">
-        <h2 className="section-title">Services</h2>
-        <div className="grid">
-          <div className="card">Nutrition Consulting</div>
-          <div className="card">Web Development</div>
-          <div className="card">Network Configuration</div>
-          <div className="card">IT Support</div>
-        </div>
-      </section>
+      
+    
 
       {/* WHY CHOOSE US */}
       <section className="section">
@@ -144,10 +136,28 @@ function App() {
 
             <nav className={menuOpen ? "nav-links active" : "nav-links"}>
               <div className="mobile-menu-header">Horizon</div>
+
               <div className="mobile-menu-links">
                 <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
                 <Link to="/articles" onClick={() => setMenuOpen(false)}>Articles</Link>
-              </div>
+
+                <div className="dropdown">
+                <span className="dropdown-title">Services</span>
+            <div className="dropdown-menu">
+              <Link to="/services/nutrition">Nutrition Consulting</Link>
+              <Link to="/services/web-development">Web Development</Link>
+              <Link to="/services/network-engineering">Network Engineering</Link>
+              <Link to="/services/it-support">IT Support</Link>
+
+            </div>
+  </div>
+</div>
+
+
+
+              
+
+
             </nav>
 
             <div
