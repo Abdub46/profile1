@@ -680,3 +680,53 @@ html, body {
   color: #94a3b8;
   cursor: pointer;
 }
+
+
+
+
+
+/****************************App.js*************/
+/* FAQ */
+.faq-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.faq-question {
+  font-weight: 600;
+}
+
+.faq-answer {
+  margin-top: 8px;
+  color: #555;
+}
+
+/* Footer */
+.custom-footer {
+  padding: 20px;
+  background: #111;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .footer-links {
+    justify-content: center;
+  }
+}

@@ -6,6 +6,12 @@ import About from "./About";
 import Articles from "./Articles";
 
 function Home() {
+  const [openFAQ, setOpenFAQ] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenFAQ(openFAQ === index ? null : index);
+  };
+
   return (
     <>
       {/* HERO */}
@@ -48,11 +54,66 @@ function Home() {
           <div className="card">Web Development</div>
           <div className="card">Network Configuration</div>
           <div className="card">IT Support</div>
-          <div className="card">Nutrition Consulting</div>
-          <div className="card">Web Development</div>
-          <div className="card">Network Configuration</div>
-          <div className="card">IT Support</div>
-          
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="section">
+        <h2 className="section-title">Why Choose Us</h2>
+        <div className="grid">
+          <div className="card">
+            <h3>Professional Expertise</h3>
+            <p>Years of practical experience in nutrition, networking, and web technologies.</p>
+          </div>
+          <div className="card">
+            <h3>Modern Solutions</h3>
+            <p>We use up-to-date tools and technologies to deliver efficient and scalable systems.</p>
+          </div>
+          <div className="card">
+            <h3>Client-Centered Approach</h3>
+            <p>Every project is tailored to meet specific needs with precision and care.</p>
+          </div>
+          <div className="card">
+            <h3>Reliable Support</h3>
+            <p>Ongoing assistance and support to ensure long-term success.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ SECTION */}
+      <section className="section">
+        <h2 className="section-title">Frequently Asked Questions</h2>
+
+        <div className="faq">
+          {[
+            {
+              question: "What services do you offer?",
+              answer:
+                "We offer nutrition consulting, web development, network configuration, and complete IT support solutions."
+            },
+            {
+              question: "How can I start a project with you?",
+              answer:
+                "Simply reach out through the contact section or subscribe to receive updates and consultation information."
+            },
+            {
+              question: "Do you offer ongoing support?",
+              answer:
+                "Yes, we provide continuous support and maintenance for systems and applications we develop."
+            }
+          ].map((item, index) => (
+            <div key={index} className="faq-item">
+              <div
+                className="faq-question"
+                onClick={() => toggleFAQ(index)}
+              >
+                {item.question}
+              </div>
+              {openFAQ === index && (
+                <div className="faq-answer">{item.answer}</div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
     </>
@@ -123,11 +184,14 @@ function App() {
           </div>
         </section>
 
-        {/* FOOTER */}
-        <footer>
-          © {new Date().getFullYear()} Horizon. All rights reserved.
-          <h4>Powered by Horizon Solutions</h4>
+        {/* NEW FOOTER */}
+        <footer className="custom-footer">
+          <div className="footer-links">
+            <Link to="/about">About Horizon</Link>
+            <Link to="/articles">Articles</Link>
+          </div>
         </footer>
+
       </div>
     </Router>
   );
