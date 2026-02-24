@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 const Articles = () => {
   const [selectedArticle, setSelectedArticle] = useState(null);
+
+  // Lock background scroll when modal opens
+  useEffect(() => {
+    if (selectedArticle) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [selectedArticle]);
 
   const articles = [
     {
       id: 1,
       title: "Understanding Modern Web Development",
       preview:
-        "A deep dive into how modern frameworks like React are shaping the future of frontend architecture.",
+        "A deep dive into how modern frameworks are shaping frontend architecture.",
       content:
-        "Modern web development focuses on building scalable, responsive, and high-performance applications. Frameworks like React, Next.js, and Vue enable developers to create dynamic user interfaces efficiently. Clean architecture, reusable components, and performance optimization are key pillars of today's development ecosystem."
-        
+        "Modern web development focuses on building scalable, responsive, and high-performance applications. Frameworks like React enable dynamic interfaces. Clean architecture, reusable components, performance optimization, and accessibility are essential principles in today’s ecosystem."
     },
     {
       id: 2,
@@ -20,52 +28,42 @@ const Articles = () => {
       preview:
         "Design is more than beauty — it defines user experience and engagement.",
       content:
-        "A clean user interface improves usability, accessibility, and overall engagement. Minimalism, spacing, color contrast, and intuitive layout play a vital role in ensuring users interact effortlessly with your product."
+        "A clean interface improves usability and accessibility. Minimal spacing, consistent color systems, readable typography, and intuitive layouts ensure users interact effortlessly with your product."
     },
     {
       id: 3,
       title: "The Future of Technology",
       preview:
-        "Artificial Intelligence, automation, and cloud systems are transforming industries worldwide.",
+        "AI, automation, and cloud systems are transforming industries.",
       content:
-        "Emerging technologies like AI, machine learning, blockchain, and cloud computing are redefining business models. Continuous learning and adaptability are essential to remain relevant in this fast-evolving digital era."
+        "Emerging technologies such as artificial intelligence and cloud computing are reshaping industries globally. Continuous learning and adaptability are critical for long-term success in the digital world."
     }
   ];
 
   return (
-    <section className="articles-section">
-      <h2 className="section-title">Articles</h2>
+    <div className="articles-page">
+      <section className="articles-section">
+        <h2 className="section-title">Articles</h2>
 
-      <div className="articles-grid">
-        {articles.map((article) => (
-          <div
-            key={article.id}
-            className="article-card"
-            onClick={() => setSelectedArticle(article)}
-          >
-            <h3>{article.title}</h3>
-            <p>{article.preview}</p>
-            <span className="read-more">Read More →</span>
-          </div>
-        ))}
-      </div>
+        <div className="articles-grid">
+          {articles.map((article) => (
+            <div
+              key={article.id}
+              className="article-card"
+              onClick={() => setSelectedArticle(article)}
+            >
+              <h3>{article.title}</h3>
+              <p>{article.preview}</p>
+              <span className="read-more">Read More →</span>
+            </div>
+          ))}
+        </div>
+      </section>
 
-
-
-      
-
-
-
-
-
-
-
-      {/* MODAL */}
       {selectedArticle && (
         <div
           className="article-modal-overlay"
           onClick={() => setSelectedArticle(null)}
-          style={{ overflowY: "auto" }}
         >
           <div
             className="article-modal"
@@ -83,7 +81,7 @@ const Articles = () => {
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 };
 
